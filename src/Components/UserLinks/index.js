@@ -1,5 +1,6 @@
 import Title from "../Title";
 import { LinkContainer } from "./styled";
+import { Link } from "./Link";
 
 export function UserLinks() {
 
@@ -8,7 +9,7 @@ export function UserLinks() {
             <Title>Links cadastrados</Title>
 
             <LinkContainer>
-
+                <Link />
             </LinkContainer>
         </>
     );
