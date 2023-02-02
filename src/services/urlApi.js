@@ -1,7 +1,7 @@
 import api from './api';
 
-export async function postActivitesBooking(body, token) {
-  const response = await api.post('/url/short', body);
+export async function postUrl(body) {
+    const response = await api.post('/url/short', body);
 
-  return response.data;
+    return response.data;
 };

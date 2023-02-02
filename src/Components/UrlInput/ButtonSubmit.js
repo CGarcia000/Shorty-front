@@ -1,9 +1,31 @@
+import { postUrl } from "../../services/urlApi";
+
 import styled from "styled-components";
 
-export function ButtonSubmit() {
+export function ButtonSubmit({
+    url,
+    setSuccess,
+    setHasError,
+    setNewUrl
+}) {
+    function handleUrlSubmit() {
+        const body = {
+            url
+        }
+
+        postUrl(body).then(res => {
+            setSuccess(current => true);
+            setHasError(current => false);
+            setNewUrl(current => res.url);
+        }).catch(e => {
+            setHasError(current => true);
+            console.log(e);
+        })
+    }
+
     return (
         <Container>
-            <button type="submit">Criar url</button>
+            <button type="button" onClick={handleUrlSubmit}>Criar url</button>
         </Container>
     );
 }

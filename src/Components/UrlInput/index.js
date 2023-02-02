@@ -12,6 +12,7 @@ export function UrlInput() {
     const [success, setSuccess] = useState(false);
     const [hasError, setHasError] = useState(false);
     const [urlInput, setUrlInput] = useState('');
+    const [newUrl, setNewUrl] = useState('');
 
     return (
         <>
@@ -20,14 +21,16 @@ export function UrlInput() {
                 <Input placeholder='URL' value={urlInput}
                         onChange={e => {
                             setUrlInput(e.target.value);
+                            setSuccess(current => false);
+                            setHasError(current => false);
                         }}
                 />
                 {
                     success ?
                     <SuccessMessage>
                         <span>Url criada com sucesso!</span>
-                        <span>Sua nova url: exemplo.com/ajdskajs</span>
-                    </SuccessMessage> : <ButtonSubmit/>
+                        <span>Sua nova url: <a href={newUrl}>{newUrl}</a></span>
+                    </SuccessMessage> : <ButtonSubmit url={urlInput} setSuccess={setSuccess} setHasError={setHasError} setNewUrl={setNewUrl}/>
                 }
                 {
                     hasError && !success?
